@@ -3,13 +3,13 @@ Ultrafast TCR clustering algorithm based on geometric isometry
 
 GIANA: Geometry Isometry based ANtigen-specific TCR Alignment, is for fast alignment of up to 10<sup>7</sup> TCR hypervariable CDR3 sequences. 
 
-GIANA is developed and maintained by [Li lab at UT Southwestern Medical Center] (lilab-utsw.org).
+GIANA is developed and maintained by [Li lab at UT Southwestern Medical Center](lilab-utsw.org).
 
 GIANA is written in Python3, with the following dependencies:
 
-[Biopython] (https://biopython.org)
-[faiss] (https://github.com/facebookresearch/faiss)
-[Scikit-learn] (https://scikit-learn.org/stable/)
+-[Biopython](https://biopython.org)
+-[faiss](https://github.com/facebookresearch/faiss)
+-[Scikit-learn](https://scikit-learn.org/stable/)
 
 After installing these dependencies, please download the source code of GIANA and the associated TRBV allele data (Imgt_Human_TRBV.fasta). 
 
