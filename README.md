@@ -7,9 +7,9 @@ GIANA is developed and maintained by [Li lab at UT Southwestern Medical Center](
 
 GIANA is written in Python3, with the following dependencies:
 
--[Biopython](https://biopython.org)
--[faiss](https://github.com/facebookresearch/faiss)
--[Scikit-learn](https://scikit-learn.org/stable/)
+- [Biopython](https://biopython.org)
+- [faiss](https://github.com/facebookresearch/faiss)
+- [Scikit-learn](https://scikit-learn.org/stable/)
 
 After installing these dependencies, please download the source code of GIANA and the associated TRBV allele data (Imgt_Human_TRBV.fasta). 
 
