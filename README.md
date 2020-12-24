@@ -52,3 +52,14 @@ This mode is not necessary when processing less than 1 million sequences. In non
 
 Here smaller `-t` value is more stringenet.
 
+### 5. Running GIANA in query mode
+
+Assume the reference TCR data is ref.txt. After running clustering (for example, mode 2), GIANA produces a cluster file ref--RotationEncodingBL62.txt. Put this file in the same directory as ref.txt. GIANA will automatically search for this file when running in query mode:
+
+`python GIANA.py -q query.txt -r ref.txt`
+
+The input file is designated by `-q` option, which also accepts a file directory. 
+
+### 6. Multi-thread processing
+
+GIANA supports multiple thread processing with the `-N` option. To date, this option only applies to the nearest neighbor search step. 
