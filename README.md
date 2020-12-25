@@ -16,6 +16,8 @@ After installing these dependencies, please download the source code of GIANA an
 
 Type `python GIANA.py -h` to display all the commandline options. 
 
+Note: in some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
+
 ### 1. Input data format
 
 Input of GIANA is flexible. The first column is kept for CDR3 amino acid sequence. If TRBV allele information is enabled (by default), the second column is required to be TRBV genes. As the TCR-seq data provided by the Adaptive Biotechnologies does not comply with the IMGT format, we provide the R code (ProcessAdaptiveGenes.R) to convert the Adaptive data input to standard format. In the output, GIANA inserts a column between the first and the second column as the cluster IDs. Other columns in the input data may contain any information, and will be kept in the final output. 
