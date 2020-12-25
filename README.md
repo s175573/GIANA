@@ -10,7 +10,7 @@ GIANA is written in Python3, with the following dependencies:
 - [faiss](https://github.com/facebookresearch/faiss)
 - [Scikit-learn](https://scikit-learn.org/stable/)
 
-After installing these dependencies, please download the source code of GIANA and the associated TRBV allele data (Imgt_Human_TRBV.fasta). 
+After installing these dependencies, please download the latest version of GIANA source code (currently v4), query.py and the associated TRBV allele data (Imgt_Human_TRBV.fasta). 
 
 ## Usage
 
