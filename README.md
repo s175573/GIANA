@@ -58,7 +58,7 @@ Here smaller `-t` value is more stringenet.
 
 Assume the reference TCR data is ref.txt. After running clustering (for example, mode 2), GIANA produces a cluster file ref--RotationEncodingBL62.txt. Put this file in the same directory as ref.txt. GIANA will automatically search for this file when running in query mode, for example:
 
-`python GIANA.py -q query.txt -r ref.txt -S 3.3 -o tmp/`
+`python GIANA.py -q TestReal-ADIRP0000023_TCRB.tsv -r hc10s10.txt -S 3.3 -o tmp/`
 
 The input file is designated by `-q` option, which also accepts a file directory. 
 
