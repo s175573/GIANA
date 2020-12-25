@@ -60,7 +60,7 @@ Assume the reference TCR data is ref.txt. After running clustering (for example,
 
 `python GIANA.py -q TestReal-ADIRP0000023_TCRB.tsv -r hc10s10.txt -S 3.3 -o tmp/`
 
-The input file is designated by `-q` option, which also accepts a file directory. 
+The input query file is designated by `-q` option, which also accepts a file directory. Reference file is followed by the `-r` option. 
 
 ### 6. Multi-thread processing
 
