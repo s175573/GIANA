@@ -35,7 +35,7 @@ Type `python GIANA.py -h` to display all the commandline options:
 |`-q QUERY, --queryFile=QUERY`|Input query file, if given, GIANA will run in query mode, also need to provide -r option.|
 |`-r REF, --refFile=REF`|Input reference file. Only required in the query model.|  
 |`-b, --Verbose`|Verbose option: if given, GIANA will print intermediate messages.|                      
-            `
+
 Note: in some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
 
 ### 1. Input data format
