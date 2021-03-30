@@ -19,22 +19,11 @@ Type `python GIANA.py -h` to display all the commandline options:
 |Commands|Description|
 |--|--|
 |`-h, --help`|show this help message and exit|
-|`-d DIRECTORY, --directory=DIRECTORY`| Input repertoire sequencing file directory. Please make sure that all the files in the directory are input files.| 
-  
-                        
-                        
-  -f FILE, --file=FILE  Input single file of CDR3 sequences for grouping
-  
-  -F FILES, --fileList=FILES
-                        Alternative input: a file containing the full path to
-                        all the files. If given, overwrite -d and -f option
-                        
-  -t THR, --threshold=THR
-                        Isometric distance threshold for calling similar CDR3
-                        groups. Without -E, smaller value will increase speed.
-                        With -E, smaller value will increase specificity. Must
-                        be smaller than 12.
-                        
+|`-d DIRECTORY, --directory=DIRECTORY`|Input repertoire sequencing file directory. Please make sure that all the files in the directory are input files.| 
+|`-f FILE, --file=FILE`|Input single file of CDR3 sequences for grouping|
+|`-F FILES, --fileList=FILES`|Alternative input: a file containing the full path to all the files. If given, overwrite `-d` and `-f` option|
+|`-t THR, --threshold=THR`|Isometric distance threshold for calling similar CDR3 groups. Without `-E`, smaller value will increase speed. With `-E`, smaller value will increase specificity. Must be smaller than 12.|
+
   -S THR_S, --threshold_score=THR_S
                         Threshold for Smith-Waterman alignment score
                         (normalized by CDR3 length). Default 3.5
