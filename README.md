@@ -22,61 +22,20 @@ Type `python GIANA.py -h` to display all the commandline options:
 |`-d DIRECTORY, --directory=DIRECTORY`|Input repertoire sequencing file directory. Please make sure that all the files in the directory are input files.| 
 |`-f FILE, --file=FILE`|Input single file of CDR3 sequences for grouping|
 |`-F FILES, --fileList=FILES`|Alternative input: a file containing the full path to all the files. If given, overwrite `-d` and `-f` option|
-|`-t THR, --threshold=THR`|Isometric distance threshold for calling similar CDR3 groups. Without `-E`, smaller value will increase speed. With `-E`, smaller value will increase specificity. Must be smaller than 12.|
-
-  -S THR_S, --threshold_score=THR_S
-                        Threshold for Smith-Waterman alignment score
-                        (normalized by CDR3 length). Default 3.5
-                        
-  -G THR_V, --threshold_vgene=THR_V
-                        Threshold for variable gene comparison. Default 3.7.
-                        
-  -o OUTDIR, --output=OUTDIR
-                        Output directory for intermediate and final outputs.
-                        
-  -O OUTFILE, --outfile=OUTFILE
-                        Output file name. If not given, a file with
-                        --RotationEncoding will be added to the input file as
-                        the output file name.
-                        
-  -T ST, --startPosition=ST
-                        Starting position of CDR3 sequence. The first ST
-                        letters are omitted. CDR3 sequence length L must be >=
-                        ST+7
-                        
-  -g GAP, --GapPenalty=GAP
-                        Gap penalty,default= -6
-                        
-  -n GAPN, --GapNumber=GAPN
-                        Maximum number of gaps allowed when performing
-                        alignment. Max=1, default=1
-                        
-  -V VFA, --VariableGeneFa=VFA
-                        IMGT Human beta variable gene sequences
-                        
-  -v, --VariableGene    If False, iSMART will omit variable gene information
-                        and use CDR3 sequences only. This will yield reduced
-                        specificity. The cut-off will automatically become the
-                        current value-4.0
-                        
-  -e, --Exact           If False, iSMART will not perform Smith-Waterman
-                        alignment after isometric encoding.
-                        
-  -N NN, --NumberOfThreads=NN
-                        Number of threads for multiple processing. Not working
-                        so well.
-                        
-  -U, --UseGPU          Use GPU for Faiss indexing. Must be CUDA GPUs.
-  
-  -q QUERY, --queryFile=QUERY
-                        Input query file, if given, GIANA will run in query
-                        mode, also need to provide -r option.
-                        
-  -r REF, --refFile=REF
-                        Input reference file. Query model required.
-                        
-  -b, --Verbose         Verbose option: if given, GIANA will print
-                        intermediate messages.`
+|`-t THR, --threshold=THR`|Isometric distance threshold for calling similar CDR3 groups. Without `-e`, smaller value will increase speed. With `-e`, smaller value will increase specificity. Must be smaller than 12.|
+|`-S THR_S, --threshold_score=THR_S`|Threshold for Smith-Waterman alignment score (normalized by CDR3 length). Default 3.5|
+|`-G THR_V, --threshold_vgene=THR_V`|Threshold for variable gene comparison. Default 3.7.|                       
+|`-o OUTDIR, --output=OUTDIR`|Output directory for intermediate and final outputs.|  
+|`-O OUTFILE, --outfile=OUTFILE`|Output file name. If not given, a file with --RotationEncoding will be added to the input file as the output file name.|                     
+|`-T ST, --startPosition=ST`|Starting position of CDR3 sequence. The first ST letters are omitted. CDR3 sequence length L must be >= ST+7|
+|`-V VFA, --VariableGeneFa=VFA`|IMGT Human beta variable gene sequences|                       
+|`-v, --VariableGene`|="If False, GIANA will omit variable gene information and use CDR3 sequences only. This will yield reduced specificity. The cut-off will automatically become the current value-4.0|                     
+|`-e, --Exact`|Non-Exact mode: If False, GIANA will not perform Smith-Waterman alignment after isometric encoding.|             
+|`-N NN, --NumberOfThreads=NN`|Number of threads for multiple processing. Only applies to faiss search step.|             
+|`-q QUERY, --queryFile=QUERY`|Input query file, if given, GIANA will run in query mode, also need to provide -r option.|
+|`-r REF, --refFile=REF`|Input reference file. Only required in the query model.|  
+|`-b, --Verbose`|Verbose option: if given, GIANA will print intermediate messages.|                      
+            `
 Note: in some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
 
 ### 1. Input data format
