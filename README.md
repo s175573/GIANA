@@ -16,7 +16,7 @@ After installing these dependencies, please download the latest version of GIANA
 
 Type `python GIANA.py -h` to display all the commandline options:
 
-Usage: GIANA4.py [options]
+`Usage: GIANA4.py [options]
 
 Options:
   -h, --help            show this help message and exit
@@ -77,7 +77,7 @@ Options:
   -r REF, --refFile=REF
                         Input reference file. Query model required.
   -b, --Verbose         Verbose option: if given, GIANA will print
-                        intermediate messages.
+                        intermediate messages.`
 
 Note: in some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
 
