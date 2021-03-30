@@ -30,7 +30,7 @@ Type `python GIANA.py -h` to display all the commandline options:
 |`-T ST, --startPosition=ST`|Starting position of CDR3 sequence. The first ST letters are omitted. CDR3 sequence length L must be >= ST+7|
 |`-V VFA, --VariableGeneFa=VFA`|IMGT Human beta variable gene sequences|                       
 |`-v, --VariableGene`|="If False, GIANA will omit variable gene information and use CDR3 sequences only. This will yield reduced specificity. The cut-off will automatically become the current value-4.0|                     
-|`-e, --Exact`|Non-Exact mode: If False, GIANA will not perform Smith-Waterman alignment after isometric encoding.|             
+|`-e, --Exact`|If False, GIANA will implement non-exact mode, and will not perform Smith-Waterman alignment after isometric encoding.|             
 |`-N NN, --NumberOfThreads=NN`|Number of threads for multiple processing. Only applies to faiss search step.|             
 |`-q QUERY, --queryFile=QUERY`|Input query file, if given, GIANA will run in query mode, also need to provide -r option.|
 |`-r REF, --refFile=REF`|Input reference file. Only required in the query model.|  
