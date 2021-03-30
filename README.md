@@ -16,15 +16,12 @@ After installing these dependencies, please download the latest version of GIANA
 
 Type `python GIANA.py -h` to display all the commandline options:
 
-`Usage: GIANA4.py [options]
-
-Options:
-  -h, --help            show this help message and exit
+|Commands|Description|
+|--|--|
+|`-h, --help`|show this help message and exit|
+|`-d DIRECTORY, --directory=DIRECTORY`| Input repertoire sequencing file directory. Please make sure that all the files in the directory are input files.| 
   
-  -d DIRECTORY, --directory=DIRECTORY
-                        Input repertoire sequencing file directory. Please
-                        make sure that all the files in the directory are
-                        input files.
+                        
                         
   -f FILE, --file=FILE  Input single file of CDR3 sequences for grouping
   
@@ -44,41 +41,53 @@ Options:
                         
   -G THR_V, --threshold_vgene=THR_V
                         Threshold for variable gene comparison. Default 3.7.
+                        
   -o OUTDIR, --output=OUTDIR
                         Output directory for intermediate and final outputs.
+                        
   -O OUTFILE, --outfile=OUTFILE
                         Output file name. If not given, a file with
                         --RotationEncoding will be added to the input file as
                         the output file name.
+                        
   -T ST, --startPosition=ST
                         Starting position of CDR3 sequence. The first ST
                         letters are omitted. CDR3 sequence length L must be >=
                         ST+7
+                        
   -g GAP, --GapPenalty=GAP
                         Gap penalty,default= -6
+                        
   -n GAPN, --GapNumber=GAPN
                         Maximum number of gaps allowed when performing
                         alignment. Max=1, default=1
+                        
   -V VFA, --VariableGeneFa=VFA
                         IMGT Human beta variable gene sequences
+                        
   -v, --VariableGene    If False, iSMART will omit variable gene information
                         and use CDR3 sequences only. This will yield reduced
                         specificity. The cut-off will automatically become the
                         current value-4.0
+                        
   -e, --Exact           If False, iSMART will not perform Smith-Waterman
                         alignment after isometric encoding.
+                        
   -N NN, --NumberOfThreads=NN
                         Number of threads for multiple processing. Not working
                         so well.
+                        
   -U, --UseGPU          Use GPU for Faiss indexing. Must be CUDA GPUs.
+  
   -q QUERY, --queryFile=QUERY
                         Input query file, if given, GIANA will run in query
                         mode, also need to provide -r option.
+                        
   -r REF, --refFile=REF
                         Input reference file. Query model required.
+                        
   -b, --Verbose         Verbose option: if given, GIANA will print
                         intermediate messages.`
-
 Note: in some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
 
 ### 1. Input data format
