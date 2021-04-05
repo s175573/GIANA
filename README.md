@@ -31,7 +31,8 @@ Type `python GIANA.py -h` to display all the commandline options:
 |`-V VFA, --VariableGeneFa=VFA`|IMGT Human beta variable gene sequences|                       
 |`-v, --VariableGene`|="If False, GIANA will omit variable gene information and use CDR3 sequences only. This will yield reduced specificity. The cut-off will automatically become the current value-4.0|                     
 |`-e, --Exact`|If False, GIANA will implement non-exact mode, and will not perform Smith-Waterman alignment after isometric encoding. Default: True|             
-|`-N NN, --NumberOfThreads=NN`|Number of threads for multiple processing. Only applies to faiss search step.|             
+|`-N NN, --NumberOfThreads=NN`|Number of threads for multiple processing. Only applies to faiss search step.|  
+|`-M --EncodingMatrix`|If true, GIANA will export the isometric encoding matrix for each TCR. Default: False|
 |`-q QUERY, --queryFile=QUERY`|Input query file, if given, GIANA will run in query mode, also need to provide -r option.|
 |`-r REF, --refFile=REF`|Input reference file. Only required in the query model.|  
 |`-b, --Verbose`|Verbose option: if given, GIANA will print intermediate messages.|                      
@@ -85,3 +86,7 @@ The input query file is designated by `-q` option, which also accepts a file dir
 ### 6. Multi-thread processing
 
 GIANA supports multiple thread processing with the `-N` option. To date, this option only applies to the nearest neighbor search step. 
+
+### 7. Visualizing output isometric cooridnates with tree plot
+
+We provide an [example](https://htmlpreview.github.io/?https://github.com/s175573/GIANA/blob/master/GIANAtree.html) to use the neighbor joining tree to visualize the output clusters.
