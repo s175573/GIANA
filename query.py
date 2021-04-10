@@ -171,11 +171,17 @@ def MergeExist(refClusterFile, outFile='queryFinal.txt',queryClusterFile='tmp_qu
     ## If direction is 'r', the overlapping and non-overlapping clusters will be added to the reference file
     refT=pd.read_table(refClusterFile, skiprows=2, delimiter='\t', header=None)
     queryT=pd.read_table(queryClusterFile, skiprows=2, delimiter='\t', header=None)
+    nq=queryT.shape[1]
+    nr=refT.shape[1]
+    if nr != nq-1:
+        print("ERROR: Make sure reference and the query samples have the same columns!")
+        print("No query file is generated.")
+        return
     gn=np.unique(queryT[1])
     queryTs=pd.DataFrame([], columns=queryT.columns)
     for nn in gn:
             tmp_ddq=queryT.loc[np.where(queryT[1]==nn)[0],:]
-            cls_lab=np.unique(tmp_ddq[6])
+            cls_lab=np.unique(tmp_ddq[nq-1])
             if len(cls_lab)==1:
                 if cls_lab[0]=='ref':
                     continue
@@ -183,7 +189,6 @@ def MergeExist(refClusterFile, outFile='queryFinal.txt',queryClusterFile='tmp_qu
     queryTs.index=range(queryTs.shape[0])
     keyr=refT[0]+'_'+refT[2]
     keyq=queryTs[0]+'_'+queryTs[2]
-    nq=queryTs.shape[1]
     vvr=np.where(queryTs[nq-1]=='ref')[0]
     vvr_in=np.where(keyr.isin(keyq[vvr]))[0]
     gn_r=list(refT.loc[vvr_in,1].drop_duplicates())
@@ -196,7 +201,7 @@ def MergeExist(refClusterFile, outFile='queryFinal.txt',queryClusterFile='tmp_qu
         tmp_dd[1]=gq
         ddo=ddo.append(tmp_dd)
     if direction=='q':
-        ddo[6]='ref'
+        ddo[nq-1]='ref'
         ## remove groups that contain only ref group
         queryTs=queryTs.append(ddo)
         queryTs=queryTs.drop_duplicates()
