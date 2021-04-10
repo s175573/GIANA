@@ -2,7 +2,7 @@
 
 GIANA is for fast alignment of up to 10<sup>7</sup> TCR hypervariable CDR3 sequences. 
 
-GIANA is developed and maintained by [Li lab at UT Southwestern Medical Center](https://lilab-utsw.org). Please direct your questions regarding GIANA to [Bo Li](bo.li@utsouthwestern.edu).
+GIANA is developed and maintained by [Li lab at UT Southwestern Medical Center](https://lilab-utsw.org). Please direct your questions regarding GIANA to Bo Li: bo.li@utsouthwestern.edu.
 
 GIANA is written in Python3, with the following dependencies:
 
