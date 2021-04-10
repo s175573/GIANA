@@ -1,4 +1,4 @@
-# GIANA: Geometry Isometry based ANtigen-specific TCR Alignment
+# GIANA: Geometry Isometry based TCR AligNment Algorithm
 
 GIANA is for fast alignment of up to 10<sup>7</sup> TCR hypervariable CDR3 sequences. 
 
