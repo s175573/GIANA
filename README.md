@@ -1,6 +1,6 @@
 # GIANA: Geometry Isometry based TCR AligNment Algorithm
 
-GIANA is for fast alignment of up to 10<sup>7</sup> TCR hypervariable CDR3 sequences. 
+GIANA is for fast alignment of up to 10<sup>7</sup> TCR hypervariable CDR3 sequences. GIANA applies a mathematical framework to perform isometric encoding of amino acid sequences. This encoding process is describted in the ipynb file.  
 
 GIANA is developed and maintained by [Li lab at UT Southwestern Medical Center](https://lilab-utsw.org). Please direct your questions regarding GIANA to Bo Li: bo.li@utsouthwestern.edu.
 
