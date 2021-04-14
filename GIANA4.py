@@ -665,7 +665,7 @@ def PreCalculateVgeneDist(VgeneFa="Imgt_Human_TRBV.fasta"):
         gg.write(line)
     gg.close()
 
-def EncodeRepertoire(inputfile, outdir, outfile='',exact=True, ST=3, thr_v=3.7, thr_s=3.5, VDict={},Vgene=True,thr_iso=10, gap=-6, GPU=False, verbose=False):
+def EncodeRepertoire(inputfile, outdir, outfile='',exact=True, ST=3, thr_v=3.7, thr_s=3.5, VDict={},Vgene=True,thr_iso=10, gap=-6, GPU=False,Mat=False, verbose=False):
     ## No V gene version
     ## Encode CDR3 sequences into 96 dimensional space and perform k-means clustering
     ## If exact is True, SW alignment will be performed within each cluster after isometric encoding and clustering
@@ -715,6 +715,9 @@ def EncodeRepertoire(inputfile, outdir, outfile='',exact=True, ST=3, thr_v=3.7, 
     ## Split into different lengths
     LD,VD, ID,SD= BuildLengthDict(seqs, vGene=vgs,INFO=infoList,sIDs=[x for x in range(len(seqs))])
     LDu, VDu, IDu, SDu = CollapseUnique(LD, VD, ID, SD)
+    if Mat:
+        Mfile=outfile+'_EncodingMatrix.txt'
+        h=open(Mfile, 'w')
     for kk in LDu:
         if verbose:
             print("---Process CDR3s with length %d ---" %(kk))
@@ -729,6 +732,12 @@ def EncodeRepertoire(inputfile, outdir, outfile='',exact=True, ST=3, thr_v=3.7, 
         dM=dM.astype("float32")
         if verbose:
             print(" The number of sequences is %d" %(dM.shape[0]))
+        if Mat:
+            for ii in range(len(vss)):
+                line=vss[ii]+'\t'+vInfo[ii][0]+'\t'
+                NUMs=[str(xx) for xx in dM[ii,:]]
+                line += '\t'.join(NUMs) + '\n'
+                h.write(line)
         sID=[x for x in range(dM.shape[0])]
         t2=time.time()
         if verbose:
@@ -879,6 +888,8 @@ def EncodeRepertoire(inputfile, outdir, outfile='',exact=True, ST=3, thr_v=3.7, 
                     line=vss[jj]+'\t'+str(gr)+'\t'+v_info+'\n'
                     _=g.write(line)
     g.close()
+    if Mat:
+        h.close()
 
 def OrderUnique(Ig):
     vv=list(Ig.values())
@@ -1072,16 +1083,20 @@ Input columns:
     parser.add_option("-d","--directory",dest="Directory",help="Input repertoire sequencing file directory. Please make sure that all the files in the directory are input files.",default="")
     parser.add_option("-f","--file",dest="File",default='',help="Input single file of CDR3 sequences for grouping")
     parser.add_option("-F","--fileList",dest="files",default='',help='Alternative input: a file containing the full path to all the files. If given, overwrite -d and -f option')
-    parser.add_option("-t","--threshold",dest="thr",default=7,help="Isometric distance threshold for calling similar CDR3 groups. Without -e, smaller value will increase speed. With -e, smaller value will increase specificity. Must be smaller than 12.")
+    parser.add_option("-t","--threshold",dest="thr",default=7,help="Isometric distance threshold for calling similar CDR3 groups. Without -E, smaller value will increase speed. With -E, smaller value will increase specificity. Must be smaller than 12.")
     parser.add_option("-S","--threshold_score",dest="thr_s",default=3.5, help="Threshold for Smith-Waterman alignment score (normalized by CDR3 length). Default 3.5")
     parser.add_option("-G","--threshold_vgene",dest="thr_v",default=3.7,help="Threshold for variable gene comparison. Default 3.7.")
     parser.add_option("-o","--output",dest="OutDir",default='./',help="Output directory for intermediate and final outputs.")
     parser.add_option("-O","--outfile",dest="OutFile",default='',help="Output file name. If not given, a file with --RotationEncoding will be added to the input file as the output file name.")
     parser.add_option("-T","--startPosition",dest='ST',default=3, help="Starting position of CDR3 sequence. The first ST letters are omitted. CDR3 sequence length L must be >= ST+7 ")
+    parser.add_option("-g","--GapPenalty",dest="Gap",default= -6,help="Gap penalty,default= -6. Not used.")
+    parser.add_option("-n","--GapNumber",dest="GapN",default=1,help="Maximum number of gaps allowed when performing alignment. Max=1, default=1. Not used.")
     parser.add_option("-V","--VariableGeneFa",dest="VFa",default="Imgt_Human_TRBV.fasta",help="IMGT Human beta variable gene sequences")
     parser.add_option("-v","--VariableGene",dest="V",default=True,action="store_false",help="If False, GIANA will omit variable gene information and use CDR3 sequences only. This will yield reduced specificity. The cut-off will automatically become the current value-4.0")
     parser.add_option("-e","--Exact",dest="E",default=True,action="store_false",help="If False, GIANA will not perform Smith-Waterman alignment after isometric encoding.")
-    parser.add_option("-N","--NumberOfThreads",dest="NN",default=1,help="Number of threads for multiple processing.")
+    parser.add_option("-N","--NumberOfThreads",dest="NN",default=1,help="Number of threads for multiple processing. Not working so well.")
+    parser.add_option("-M","--EncodingMatrix", dest="Mat", default=False,action="store_true", help="If true, GIANA will export the isometric encoding matrix for each TCR. Default: False.")
+    parser.add_option("-U","--UseGPU",dest="GPU", default=False, action="store_true",help="Use GPU for Faiss indexing. Must be CUDA GPUs.")
     parser.add_option("-q","--queryFile",dest="Query",default='',help="Input query file, if given, GIANA will run in query mode, also need to provide -r option.")
     parser.add_option("-r","--refFile",dest="ref", default='',help="Input reference file. Query model required.")
     parser.add_option("-b","--Verbose", dest='v', default=False, action="store_true", help="Verbose option: if given, GIANA will print intermediate messages.")
@@ -1160,6 +1175,7 @@ def main():
         VScore={}
         VV=opt.V
         EE=opt.E
+        Mat=opt.Mat
         ST=int(opt.ST)
         thr_v=float(opt.thr_v)
         verbose=opt.v
@@ -1181,7 +1197,7 @@ def main():
         faiss.omp_set_num_threads(NT)
         for ff in files:
             print("Processing %s" %ff)
-            EncodeRepertoire(ff, OutDir, OutFile, ST=ST, thr_s=thr_s, thr_v=thr_v, exact=EE,VDict=VScore, Vgene=VV, thr_iso=cutoff, gap=Gap, GPU=GPU, verbose=verbose)
+            EncodeRepertoire(ff, OutDir, OutFile, ST=ST, thr_s=thr_s, thr_v=thr_v, exact=EE,VDict=VScore, Vgene=VV, thr_iso=cutoff, gap=Gap, GPU=GPU, Mat=Mat, verbose=verbose)
         
 if __name__ == "__main__":
     t0=time.time()
