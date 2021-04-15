@@ -37,7 +37,7 @@ Type `python GIANA.py -h` to display all the commandline options:
 |`-r REF, --refFile=REF`|Input reference file. Only required in the query model.|  
 |`-b, --Verbose`|Verbose option: if given, GIANA will print intermediate messages.|                      
 
-Note: in some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
+Note: GIANA is successfully tested in Linux and Mac OS. In some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
 
 ### 1. Input data format
 
