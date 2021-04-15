@@ -23,7 +23,7 @@ Type `python GIANA.py -h` to display all the commandline options:
 |`-f FILE, --file=FILE`|Input single file of CDR3 sequences for grouping|
 |`-F FILES, --fileList=FILES`|Alternative input: a file containing the full path to all the files. If given, overwrite `-d` and `-f` option|
 |`-t THR, --threshold=THR`|Isometric distance threshold for calling similar CDR3 groups. Without `-e`, smaller value will increase speed. With `-e`, smaller value will increase specificity. Must be smaller than 12.|
-|`-S THR_S, --threshold_score=THR_S`|Threshold for Smith-Waterman alignment score (normalized by CDR3 length). Default 3.5|
+|`-S THR_S, --threshold_score=THR_S`|Threshold for Smith-Waterman alignment score (normalized by CDR3 length). Default 3.6|
 |`-G THR_V, --threshold_vgene=THR_V`|Threshold for variable gene comparison. Default 3.7.|                       
 |`-o OUTDIR, --output=OUTDIR`|Output directory for intermediate and final outputs.|  
 |`-O OUTFILE, --outfile=OUTFILE`|Output file name. If not given, a file with --RotationEncoding will be added to the input file as the output file name.|                     
