@@ -1084,7 +1084,7 @@ Input columns:
     parser.add_option("-f","--file",dest="File",default='',help="Input single file of CDR3 sequences for grouping")
     parser.add_option("-F","--fileList",dest="files",default='',help='Alternative input: a file containing the full path to all the files. If given, overwrite -d and -f option')
     parser.add_option("-t","--threshold",dest="thr",default=7,help="Isometric distance threshold for calling similar CDR3 groups. Without -E, smaller value will increase speed. With -E, smaller value will increase specificity. Must be smaller than 12.")
-    parser.add_option("-S","--threshold_score",dest="thr_s",default=3.5, help="Threshold for Smith-Waterman alignment score (normalized by CDR3 length). Default 3.5")
+    parser.add_option("-S","--threshold_score",dest="thr_s",default=3.6, help="Threshold for Smith-Waterman alignment score (normalized by CDR3 length). Default 3.6")
     parser.add_option("-G","--threshold_vgene",dest="thr_v",default=3.7,help="Threshold for variable gene comparison. Default 3.7.")
     parser.add_option("-o","--output",dest="OutDir",default='./',help="Output directory for intermediate and final outputs.")
     parser.add_option("-O","--outfile",dest="OutFile",default='',help="Output file name. If not given, a file with --RotationEncoding will be added to the input file as the output file name.")
