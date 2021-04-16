@@ -39,6 +39,8 @@ Type `python GIANA.py -h` to display all the commandline options:
 
 Note: GIANA is successfully tested in Linux and Mac OS. In some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
 
+`-S` is a critical parameter that balances clustering precision and recall. When running a new dataset, we recommand users to choose the appropriate cutoff depending on the research purposes. For example, when performing repertoire classification tasks for complex diseases, such as cancer, where multiple disease-associated antigens are anticipated, it is usually more desirable to choose a lenient cutoff to include as many antigen-specific TCRs as possible. When dealing with diseases bearing immunodominant epitopes (such as influenza), the users can usually afford to choose a more stringent cutoff to ensure higher specificity. 
+
 ### 1. Input data format
 
 Input of GIANA is flexible. The first column is kept for CDR3 amino acid sequence. If TRBV allele information is enabled (by default), the second column is required to be TRBV genes. As the TCR-seq data provided by the Adaptive Biotechnologies does not comply with the IMGT format, we provide the R code (ProcessAdaptiveGenes.R) to convert the Adaptive data input to standard format. In the output, GIANA inserts a column between the first and the second column as the cluster IDs. Other columns in the input data may contain any information, and will be kept in the final output. 
