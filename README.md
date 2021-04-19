@@ -39,7 +39,7 @@ Type `python GIANA.py -h` to display all the commandline options:
 
 Note: GIANA is successfully tested in Linux and Mac OS. In some operation systems, by default `python` is python2. To run GIANA correctly, user needs to use `python3` instead.
 
-## Choosing desirable parameters for TCR clustering
+### Choosing desirable parameters for TCR clustering
 `-S` is a critical parameter that balances clustering precision and recall. When running a new dataset, we recommand users to choose the appropriate cutoff depending on the research purposes. For example, when performing repertoire classification tasks for complex diseases, such as cancer, where multiple disease-associated antigens are anticipated, it is usually more desirable to choose a lenient cutoff to include as many antigen-specific TCRs as possible. When dealing with diseases bearing immunodominant epitopes (such as influenza), the users can usually afford to choose a more stringent cutoff to ensure higher specificity. 
 
 The cutoff for isometric distance (`-t` option), is less important to the outcome of GIANA. By default, we chose a distance cutoff (10) that is large enough to include more dissimilar CDR3s, which will be curated with SW alignment. With a more stringent cutoff, GIANA will become faster, as it processes fewer TCRs, and will achieve higher precision, at the cost of lower sensitivity even with a more lenient cutoff (-S option) for the SW alignment score. In sum, the -t option marks a hard boundary on the TCRs to be passed forward for clustering, where the -S option further refines these TCRs. It is usually not necessary to reduce the default value of isometric distance cutoff unless there is an obvious need for higher (2X) speed. 
