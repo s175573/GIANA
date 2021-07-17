@@ -1136,7 +1136,8 @@ def main():
                 t2_0=time.time()
                 print("Querying "+qf)
                 qf_s=qf.split('/')[-1]
-                outFile=re.sub('\\.txt','',qf_s)+'_query_'+rFile0+'.txt'
+                #outFile=re.sub('\\.txt','',qf_s)+'_query_'+rFile0+'.txt'
+                outFile=os.path.splitext(qf_s)[0]+'_query_'+os.path.basename(rFile0)+'.txt'
                 of=OutDir+'/'+outFile
                 if path.exists(of):
                     print(of+' already exits. Skipping.')
