@@ -656,7 +656,7 @@ def PreCalculateVgeneDist(VgeneFa="Imgt_Human_TRBV.fasta"):
             s2_CDR1=CDR1Dict[V2]
             s2_CDR2=CDR2Dict[V2]
             score1=SeqComparison(s1_CDR1,s2_CDR1)
-            score2=SeqComparison(s2_CDR2,s2_CDR2)
+            score2=SeqComparison(s1_CDR2,s2_CDR2)
             #print score1+score2
             VScore[(V1,V2)]=score1+score2
     gg=open('VgeneScores.txt','w')
