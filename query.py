@@ -162,7 +162,7 @@ def MakeQuery(qFile, rData=[],dbFile=None, Vgene=True, thr=7, ST=3, thr_s=3.3):
                     _=g.write(line2)
                     curList.append(tup2)
     g.close()
-    cmd='python3 GIANA4.py -f tmp_query.txt -S '+str(thr_s)
+    cmd='python3 GIANA4.1.py -f tmp_query.txt -S '+str(thr_s) ## updated to GIANA4.1
     p=sp.run(cmd, shell=True)
 
 def MergeExist(refClusterFile, outFile='queryFinal.txt',queryClusterFile='tmp_query--RotationEncodingBL62.txt', direction='q'):
