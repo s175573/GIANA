@@ -162,7 +162,7 @@ def MakeQuery(qFile, rData=[],dbFile=None, Vgene=True, thr=7, ST=3, thr_s=3.3):
                     _=g.write(line2)
                     curList.append(tup2)
     g.close()
-    cmd='python3 GIANA4.1.py -f tmp_query.txt -S '+str(thr_s) ## updated to GIANA4.1
+    cmd='python3 GIANA4.py -f tmp_query.txt -S '+str(thr_s)
     p=sp.run(cmd, shell=True)
 
 def MergeExist(refClusterFile, outFile='queryFinal.txt',queryClusterFile='tmp_query--RotationEncodingBL62.txt', direction='q'):
@@ -185,7 +185,7 @@ def MergeExist(refClusterFile, outFile='queryFinal.txt',queryClusterFile='tmp_qu
             if len(cls_lab)==1:
                 if cls_lab[0]=='ref':
                     continue
-            queryTs=queryTs.append(tmp_ddq)
+            queryTs=queryTs._append(tmp_ddq)
     queryTs.index=range(queryTs.shape[0])
     keyr=refT[0]+'_'+refT[2]
     keyq=queryTs[0]+'_'+queryTs[2]
@@ -199,11 +199,11 @@ def MergeExist(refClusterFile, outFile='queryFinal.txt',queryClusterFile='tmp_qu
         vv=np.where(keyq.isin(tmpkey))[0][0]
         gq=queryTs[1][vv]
         tmp_dd[1]=gq
-        ddo=ddo.append(tmp_dd)
+        ddo=ddo._append(tmp_dd)
     if direction=='q':
         ddo[nq-1]='ref'
         ## remove groups that contain only ref group
-        queryTs=queryTs.append(ddo)
+        queryTs=queryTs._append(ddo)
         queryTs=queryTs.drop_duplicates()
         queryTs.to_csv(outFile, sep='\t',header=False,index=False)
 #    queryTs.index=range(queryTs.shape[0])
