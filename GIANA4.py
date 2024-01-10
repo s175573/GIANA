@@ -24,7 +24,8 @@
 import sys, os, re, resource
 from os import path
 import numpy as np
-from Bio.SubsMat.MatrixInfo import blosum62
+#from Bio.SubsMat.MatrixInfo import blosum62
+from Bio.Align import substitution_matrices
 import time
 from time import gmtime, strftime
 from operator import itemgetter
@@ -37,12 +38,13 @@ from sklearn.manifold import MDS
 import faiss
 from query import *
 
+blosum62=substitution_matrices.load('BLOSUM62')
 AAstring='ACDEFGHIKLMNPQRSTVWY'
 AAstringList=list(AAstring)
 cur_dir=os.path.dirname(os.path.realpath(__file__))+'/'
 
 blosum62n={}
-for kk in blosum62:
+for kk in blosum62.keys():
     a1=kk[0]
     a2=kk[1]
     vv=blosum62[kk]
