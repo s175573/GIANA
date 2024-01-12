@@ -1238,8 +1238,8 @@ def main():
                 if len(line)==0:
                     break
                 ww=line.strip().split('\t')
-                VScore[(ww[0],ww[1])]=int(ww[2])/20
-                VScore[(ww[1],ww[0])]=int(ww[2])/20
+                VScore[(ww[0],ww[1])]=int(float(ww[2]))/20
+                VScore[(ww[1],ww[0])]=int(float(ww[2]))/20
         Gap=int(opt.Gap)
         Gapn=int(opt.GapN)
         OutFile=opt.OutFile
