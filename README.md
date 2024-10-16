@@ -2,7 +2,7 @@
 
 GIANA is for fast alignment of up to 10<sup>7</sup> TCR hypervariable CDR3 sequences. GIANA applies a mathematical framework to perform isometric encoding of amino acid sequences. This encoding process is describted in the ipynb file.  
 
-GIANA is developed and maintained by [Li lab at UT Southwestern Medical Center](https://lilab-utsw.org). Please direct your questions regarding GIANA to Bo Li: bo.li@utsouthwestern.edu.
+GIANA is developed and maintained by [Li lab at University of Pennsylvania](https://lilab-utsw.org). Please direct your questions regarding GIANA to Bo Li: lib3@chop.edu.
 
 GIANA is written in Python3, with the following dependencies:
 
